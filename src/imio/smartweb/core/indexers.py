@@ -11,6 +11,7 @@ from plone.app.contenttypes.indexers import SearchableText
 from plone.app.contenttypes.indexers import _unicode_save_string_concat
 from plone.dexterity.interfaces import IDexterityContent
 from plone.indexer.decorator import indexer
+from imio.smartweb.core.utils import concat_voca_term
 
 
 @indexer(IDexterityContent)
@@ -71,14 +72,15 @@ def related_quickaccess(obj):
 
 @indexer(IPages)
 def concat_category_topics_indexer(obj):
-    category = obj.taxonomy_page_category
+    category = obj.page_category
     topics = obj.topics
 
     index = []
+    if not category and not topics:
+        return index
     if topics:
         for topic in topics:
             index.append(concat_voca_term(category, topic))
     else:
         index = category
-
     return index
