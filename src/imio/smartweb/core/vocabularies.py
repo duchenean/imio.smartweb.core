@@ -258,7 +258,7 @@ class ImageSizeVocabularyFactory:
 ImageSizeVocabulary = ImageSizeVocabularyFactory()
 
 
-class ConcatCategoryTopicsVocabularyFactory:
+class CategoryAndTopicsVocabularyFactory:
     def __call__(self, context=None):
         categories_taxo = get_categories()
         categories_voca = categories_taxo.makeVocabulary("en").inv_data
@@ -289,13 +289,13 @@ class ConcatCategoryTopicsVocabularyFactory:
         return SimpleVocabulary(terms)
 
 
-ConcatCategoryTopicsVocabulary = ConcatCategoryTopicsVocabularyFactory()
+CategoryAndTopicsVocabulary = CategoryAndTopicsVocabularyFactory()
 
 
-class ConcatCategoryTopicsRegistryVocabularyFactory:
+class FilteredCategoryAndTopicsVocabularyFactory:
     def __call__(self, context=None):
         voca_registry = api.portal.get_registry_record(
-            name="smartweb.category_topics.voca_setting"
+            name="smartweb.category_and_topics_vocabulary"
         )
         terms = []
         if voca_registry is not None:
@@ -307,4 +307,4 @@ class ConcatCategoryTopicsRegistryVocabularyFactory:
         return SimpleVocabulary(terms)
 
 
-ConcatCategoryTopicsRegistryVocabulary = ConcatCategoryTopicsRegistryVocabularyFactory()
+FilteredCategoryAndTopicsVocabulary = FilteredCategoryAndTopicsVocabularyFactory()

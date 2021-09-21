@@ -4,6 +4,7 @@ from imio.smartweb.core.contents import IFolder
 from imio.smartweb.core.contents import IPages
 from imio.smartweb.core.contents import ISection
 from imio.smartweb.core.contents import ISectionText
+from imio.smartweb.core.utils import concat_voca_term
 from plone import api
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.app.contenttypes.behaviors.richtext import IRichText
@@ -11,7 +12,6 @@ from plone.app.contenttypes.indexers import SearchableText
 from plone.app.contenttypes.indexers import _unicode_save_string_concat
 from plone.dexterity.interfaces import IDexterityContent
 from plone.indexer.decorator import indexer
-from imio.smartweb.core.utils import concat_voca_term
 
 
 @indexer(IDexterityContent)
